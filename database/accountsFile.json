@@ -1,0 +1,30 @@
+[
+  {
+    "ID": 1,
+    "Name": "Bob Dole",
+    "Bank Name": "Bank of the Banks",
+    "Description": "It's really a bank",
+    "Transactions": [
+      {
+        "ID": 1,
+        "Title": "Pudding",
+        "Amount": 3.50,
+        "Pending": true
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "Name": "Dylan Dole",
+    "Bank Name": "Bank of the Money",
+    "Description": "It's really a bank",
+    "Transactions": [
+      {
+        "ID": 1,
+        "Title": "Fudge",
+        "Amount": 3.00,
+        "Pending": false
+      }
+    ]
+  }
+]

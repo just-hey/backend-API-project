@@ -9,11 +9,14 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "Justin",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
     "morgan": "^1.9.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
     "nodemon": "^1.12.1"
   }
 }
