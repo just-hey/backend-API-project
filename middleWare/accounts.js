@@ -2,7 +2,7 @@ const accountLib = require('../lib/accounts')
 
 function getAccount (req, res, next) {
   try {
-    let accounts = accountLib.get()
+    let accounts = accountLib.getAccount()
     return res.status(200).json(accounts)
   } catch (error) {
     console.log(error)
@@ -15,7 +15,7 @@ function getByID (req, res, next) {
     let accountID = req.params.id
     let account = accountLib.getByID(accountID)
     if (!account) {
-      return res.status(404).json({message: `Error: Did not find account for ID: ${accountID}`})
+      return res.status(404).json({message: `Error: Did not find account with ID: ${accountID}`})
     } else {
       return res.status(200).json(account)
     }
@@ -25,15 +25,21 @@ function getByID (req, res, next) {
   }
 }
 
+//create new account
 function createAccount (req, res, next) {
   try {
-    //creates new account with
-    if (!req.body.name || !req.body.bankName) {
-      return res.status(400).json({message: 'Be sure to include: Name and Bank Name'})
+    //creates new account aslong as 'name', 'bankName', 'ID', and 'Description' are provided
+    let personName = req.body.name
+    let bankName = req.body.bankName
+    let accountID = req.body.accID
+    let accountDesc = req.body.desc
+
+    if (!personName || !bankName || !accountID || !accountDesc) {
+      return res.status(400).json({message: 'Be sure to include: Name, Bank Name, ID, and a Description.'})
     } else {
-      let personName = req.body.name
-      let bankName = req.body.bankName
-      let accountID = 0
+
+
+      return res.status(200).json(account)
 
     }
   } catch (error) {
@@ -54,6 +60,14 @@ function updateAccount (req, res, next) {
 function deleteAccount (req, res, next) {
   try {
     //delete account if ID matches
+    let accountID = req.params.id
+    let account = accountLib.getByID(accountID)
+    if (!account) {
+      return res.status(404).json({message: `Error: Did not find account with ID: ${accountID}`})
+    } else {
+      //If it gets into this else: need to find in the .json file and remove it from the array.
+      return res.status(200).json({message: `Account with ID: ${accountID} has been deleted.`})
+    }
   } catch (e) {
     console.log(error)
     return res.status(500).json({message: 'Error: Could not delete account'})

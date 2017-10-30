@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const accounts = require('./middleWare/accounts')
 
 //READ all accounts
-app.get('/accounts', accounts.getAccount)
+app.get('/accounts/', accounts.getAccount)
 
 //READ an account
 app.get('/accounts/:id', accounts.getByID)
@@ -18,7 +18,6 @@ app.put('/accounts/:id', accounts.updateAccount)
 
 //DELETE an account
 app.delete('/accounts/:id', accounts.deleteAccount)
-
 
 //READ all transactions from account
 app.get('/accounts/:id/transactions', accounts.getTransactions)
